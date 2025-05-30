@@ -1,0 +1,1074 @@
+@import url("https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&display=swap"); /* Added more weights */
+
+/* --- Global Refinements --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Public Sans", sans-serif;
+  font-weight: 400; /* Default body weight */
+  font-size: clamp(16px, 1.1vw, 18px); /* Responsive base font size */
+  background-color: #f9f9f9;
+  color: #333; /* Softer than pure black */
+  scroll-behavior: smooth;
+  line-height: 1.65; /* Increased for readability */
+  -webkit-font-smoothing: antialiased; /* Smoother font rendering */
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* --- Animation & Transition Defaults --- */
+:root {
+  --ease-out-quint: cubic-bezier(0.23, 1, 0.32, 1);
+  --transition-speed-fast: 0.3s;
+  --transition-speed-medium: 0.5s;
+  --transition-speed-slow: 0.7s;
+}
+
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(25px); /* Slightly less travel */
+  transition: opacity var(--transition-speed-slow) var(--ease-out-quint),
+              transform var(--transition-speed-slow) var(--ease-out-quint);
+  will-change: opacity, transform;
+}
+
+.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- Global Container for content blocks --- */
+.container {
+  max-width: 1200px; /* Standard max-width for content areas */
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 15px;  /* Inner padding for content within the max-width */
+  padding-right: 15px; /* Inner padding for content within the max-width */
+  width: 100%; /* Ensure it takes up available space before max-width kicks in */
+}
+
+
+/* --- Section Spacing (for the <section> elements themselves) --- */
+.about-section,
+.stats-section,
+/* .services-section has specific padding below */
+.projects-section,
+/* .executives-section has specific padding below */
+/* Add classes from garagerestoration.html that need this global padding */
+.service-details,
+.lcs-advantage,
+.our-process,
+.featured-projects, /* This class is also on index.html, ensure consistency or specificity */
+.service-testimonials,
+.service-faq {
+  padding-top: clamp(60px, 8vw, 100px);
+  padding-bottom: clamp(60px, 8vw, 100px);
+  padding-left: clamp(20px, 5vw, 50px); /* Outer padding for the section */
+  padding-right: clamp(20px, 5vw, 50px); /* Outer padding for the section */
+}
+
+/* Sections with intentionally different/larger horizontal padding */
+.services-section, .executives-section {
+    padding-top: clamp(60px, 8vw, 100px); /* Keep top/bottom consistent */
+    padding-bottom: clamp(60px, 8vw, 100px); /* Keep top/bottom consistent */
+    padding-left: clamp(20px, 8vw, 110px);
+    padding-right: clamp(20px, 8vw, 110px);
+}
+/* The .service-hero and .contact-footer (from index) manage their full-width backgrounds
+   and internal content centering differently, so they don't need this global L/R section padding. */
+
+
+/* --- Navbar --- */
+.navbar {
+  display: flex;
+  align-items: center;
+  padding: 15px clamp(20px, 5vw, 50px); /* This padding provides edge spacing for navbar content */
+  border-bottom: 1px solid #e0e0e0;
+  background-color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+}
+.logo {
+  flex-shrink: 0; /* Prevents the logo from shrinking */
+}
+
+.logo img {
+  height: 28px;
+  width: auto;
+  display: block;
+}
+.nav-links {
+  display: flex;
+  justify-content: center; /* Center the link items */
+  flex-grow: 1; /* Allows nav-links to take up available horizontal space */
+  gap: 35px;
+}
+
+
+.nav-links a {
+  text-decoration: none;
+  color: #444;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color var(--transition-speed-fast) var(--ease-out-quint);
+  position: relative;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: #e66c64;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #e66c64;
+  transition: width var(--transition-speed-fast) var(--ease-out-quint);
+}
+.nav-links a:hover::after,
+.nav-links a.active::after {
+  width: 60%;
+}
+
+
+/* Dropdown Menu */
+.nav-links .dropdown {
+  display: flex;
+  align-items: center;
+}
+.dropdown { position: relative; }
+.dropdown-toggle { color: #444; font-size: 0.9rem; font-weight: 500; }
+
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background: #fff;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0,0,0,0.05);
+  border-radius: 8px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-speed-fast) var(--ease-out-quint),
+              transform var(--transition-speed-fast) var(--ease-out-quint);
+  min-width: 200px;
+  padding: 8px 0;
+  z-index: 100;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 10px 20px;
+  color: #444;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 400;
+  transition: background-color var(--transition-speed-fast) var(--ease-out-quint),
+              color var(--transition-speed-fast) var(--ease-out-quint);
+}
+.dropdown-menu a:hover {
+  background-color: #f7f7f7;
+  color: #e66c64;
+}
+.dropdown-menu a::after { display: none; }
+
+.dropdown:hover .dropdown-menu {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+  pointer-events: auto;
+}
+
+/* --- Hero Section --- */
+.hero {
+  position: relative;
+  padding: clamp(80px, 10vw, 120px) clamp(20px, 5vw, 50px) clamp(200px, 20vw, 280px);
+  background-color: #f9f9f9;
+  z-index: 1;
+  overflow: hidden;
+  text-align: center;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.hero-content h1 {
+  font-size: clamp(2.8rem, 7vw, 5.5rem);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+  margin-bottom: 40px;
+  color: #111;
+}
+
+.buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.hero-video {
+  position: absolute;
+  bottom: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 850px;
+  z-index: 0;
+  opacity: 0.25;
+  pointer-events: none;
+}
+.hero-video video {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* --- Buttons --- */
+.btn {
+  padding: 14px 28px;
+  font-weight: 600;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  border-radius: 6px;
+  transition: all var(--transition-speed-fast) var(--ease-out-quint);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn.primary {
+  background-color: #e66c64;
+  color: white;
+  border: 2px solid #e66c64;
+  box-shadow: 0 4px 12px rgba(230, 108, 100, 0.2), 0 1px 3px rgba(0,0,0,0.05);
+}
+.btn.primary:hover {
+  background-color: #d95f57;
+  border-color: #d95f57;
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 6px 16px rgba(230, 108, 100, 0.3), 0 2px 4px rgba(0,0,0,0.07);
+}
+.btn.primary:active {
+  transform: translateY(0px) scale(0.98);
+  background-color: #cc544f;
+  box-shadow: 0 2px 6px rgba(230, 108, 100, 0.2);
+}
+
+.btn.outline {
+  background-color: #fff;
+  color: #555;
+  border: 2px solid #e0e0e0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.03);
+}
+.btn.outline .text i {
+    transition: transform var(--transition-speed-fast) var(--ease-out-quint);
+}
+.btn.outline:hover {
+  background-color: #fdfdfd;
+  color: #e66c64;
+  border-color: #e66c64;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.07), 0 2px 4px rgba(0,0,0,0.04);
+}
+.btn.outline:hover .text .fa-arrow-right {
+    transform: translateX(3px);
+}
+.btn.outline:hover .text .fa-arrow-left {
+    transform: translateX(-3px);
+}
+.btn.outline .arrow-down { display: none; }
+
+
+/* --- About Section --- */
+.about-container { /* This is a specific container for the about section on index.html */
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1200px; /* Consistent with global .container */
+  margin: 0 auto; /* Consistent with global .container */
+  gap: clamp(30px, 5vw, 60px);
+  align-items: flex-start;
+}
+.about-header {
+  flex: 1 1 350px;
+}
+.about-header h3 {
+  font-size: clamp(1.5rem, 2.5vw, 1.8rem);
+  color: #e66c64;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 25px;
+}
+.about-image img {
+  width: 100%;
+  height: auto;
+  max-height: 450px;
+  border-radius: 10px;
+  object-fit: cover;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+.about-content {
+  flex: 2 1 500px;
+  padding-top: 0;
+}
+.about-content h2 {
+  font-size: clamp(1.8rem, 3vw, 2.25rem);
+  line-height: 1.35;
+  font-weight: 600;
+  color: #222;
+  margin-bottom: 20px;
+}
+.about-content p {
+  font-size: clamp(0.9rem, 1.2vw, 1rem);
+  line-height: 1.7;
+  color: #444;
+  margin-bottom: 30px;
+}
+.feature-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+.feature-row {
+  display: flex;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex: 1 1 220px;
+}
+.feature-item .icon {
+  background-color: rgba(230, 108, 100, 0.1);
+  color: #e66c64;
+  border-radius: 10px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+  transition: transform var(--transition-speed-fast) var(--ease-out-quint);
+}
+.feature-item:hover .icon {
+    transform: scale(1.1);
+}
+.feature-item h4 {
+  font-size: clamp(1rem, 1.5vw, 1.1rem);
+  font-weight: 600;
+  margin: 0;
+  color: #333;
+}
+
+/* --- Stats Section --- */
+.stats-section {
+  background-color: #f0f0f0;
+  text-align: center;
+}
+.stats-container { /* Specific container for stats on index.html */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  border-radius: 8px;
+  overflow: hidden;
+  max-width: 1200px; /* Consistent with global .container */
+  margin: 0 auto; /* Consistent with global .container */
+}
+.stat {
+  padding: clamp(25px, 4vw, 40px);
+  text-align: left;
+  border-right: 1px solid rgba(57, 53, 52, 0.2);
+}
+
+.stat:last-child {
+  border-right: none;
+}
+.stat h3 {
+  font-size: clamp(0.8rem, 1vw, 0.9rem);
+  font-weight: 500;
+  color: #555;
+  margin-top: 5px;
+  line-height: 1.3;
+}
+.stat .highlight {
+  font-size: clamp(2.8rem, 5vw, 4rem);
+  color: #e66c64;
+  font-weight: 600;
+  line-height: 1;
+}
+.count-percent::after, .add-percent::after {
+  font-size: clamp(2.8rem, 5vw, 4rem);
+  margin-left: 2px;
+  color: inherit;
+  font-weight: 600;
+}
+
+/* --- Services Section (on index.html) --- */
+/* This section has specific styling rules in index.html */
+.services-section h2 {
+  text-align: center;
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 700;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+}
+.services-section h2 span { color: #333; font-weight: 400; }
+.services-section h2 strong { color: #e66c64; font-weight: 700; }
+.services-description {
+  font-size: clamp(0.9rem, 1.2vw, 1rem);
+  text-align: center;
+  color: #555;
+  margin-bottom: 50px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.7;
+}
+.services-container { /* Specific container for services on index.html */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  max-width: 1200px; /* Consistent with global .container */
+  margin: 0 auto; /* Consistent with global .container */
+}
+.service-card {
+  background-color: #fff;
+  border: 1px solid #e9e9e9;
+  border-radius: 10px;
+  padding: 30px 25px;
+  transition: transform var(--transition-speed-medium) var(--ease-out-quint),
+              box-shadow var(--transition-speed-medium) var(--ease-out-quint);
+  text-align: left;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+}
+.service-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08), 0 3px 8px rgba(0,0,0,0.05);
+}
+.service-card .icon {
+  font-size: 2rem;
+  color: #e66c64;
+  margin-bottom: 18px;
+  height: auto;
+}
+.service-card .icon img.roof-icon {
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+}
+.service-card h3 {
+  font-size: clamp(1.1rem, 1.8vw, 1.25rem);
+  margin-bottom: 12px;
+  font-weight: 600;
+  color: #222;
+}
+.service-card p {
+  font-size: 0.9rem;
+  color: #444;
+  margin-bottom: 15px;
+  line-height: 1.6;
+  flex-grow: 1;
+}
+.service-card ul {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 20px;
+}
+.service-card ul li {
+  font-size: 0.85rem;
+  margin-bottom: 8px;
+  color: #333;
+}
+.service-card .btn.primary {
+  margin-top: auto;
+  align-self: flex-start;
+  padding: 10px 20px;
+  font-size: 0.75rem;
+}
+
+/* --- Projects Section --- */
+.projects-section { background-color: #fff; }
+.projects-section h2 {
+  text-align: center;
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 700;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+}
+.projects-section h2 span { font-weight: 400; color: #333; }
+.projects-section h2 strong { color: #e66c64; }
+.projects-description {
+  text-align: center;
+  font-size: clamp(0.9rem, 1.2vw, 1rem);
+  color: #555;
+  max-width: 700px;
+  margin: 0 auto 50px;
+  line-height: 1.7;
+}
+.project-filters {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin: 30px 0 40px;
+  flex-wrap: wrap;
+}
+.filter-btn {
+  padding: 9px 18px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  background-color: #fff;
+  color: #555;
+  border: 1px solid #ddd;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all var(--transition-speed-fast) var(--ease-out-quint);
+}
+.filter-btn:hover {
+  background-color: #f5f5f5;
+  color: #e66c64;
+  border-color: #e66c64;
+}
+.filter-btn.active {
+  background-color: #e66c64;
+  color: #fff;
+  border-color: #e66c64;
+  box-shadow: 0 2px 8px rgba(230, 108, 100, 0.2);
+}
+.project-slider {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 40px 0;
+}
+.project-track {
+  display: flex;
+  width: fit-content;
+  animation: scrollLinear 45s linear infinite;
+}
+.project-card {
+  flex: 0 0 clamp(300px, 30vw, 380px);
+  width: clamp(300px, 30vw, 380px);
+  border-radius: 10px;
+  transform: scale(0.85);
+  opacity: 0.5;
+  filter: blur(1px);
+  transition: transform var(--transition-speed-medium) var(--ease-out-quint),
+              filter var(--transition-speed-medium) var(--ease-out-quint),
+              opacity var(--transition-speed-medium) var(--ease-out-quint),
+              box-shadow var(--transition-speed-medium) var(--ease-out-quint);
+  position: relative;
+  overflow: hidden;
+  margin: 0 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.project-card:hover,
+.project-card.active {
+  transform: scale(1);
+  opacity: 1;
+  filter: none;
+  z-index: 2;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.project-card img {
+  width: 100%;
+  height: 450px;
+  display: block;
+  object-fit: cover;
+  transition: transform var(--transition-speed-medium) var(--ease-out-quint);
+}
+
+.project-card:hover img,
+.project-card.active img {
+  transform: scale(1.05);
+}
+
+.project-card .overlay {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 20px 25px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 20%, rgba(0,0,0,0.5) 60%, transparent);
+  color: white;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 60%;
+  box-sizing: border-box;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity var(--transition-speed-medium) var(--ease-out-quint),
+              transform var(--transition-speed-medium) var(--ease-out-quint);
+}
+
+.project-card:hover .overlay,
+.project-card.active .overlay {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.project-card .project-title {
+  font-size: clamp(1.1rem, 1.8vw, 1.3rem);
+  font-weight: 600;
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+
+.project-card .project-description {
+  font-size: 0.85rem;
+  color: #ddd;
+  margin-bottom: 15px;
+  line-height: 1.5;
+}
+.learn-more-btn {
+  align-self: flex-start;
+  background-color: #e66c64;
+  color: white;
+  padding: 8px 16px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  border: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  border-radius: 4px;
+  transition: background-color var(--transition-speed-fast) var(--ease-out-quint),
+              transform var(--transition-speed-fast) var(--ease-out-quint);
+}
+.learn-more-btn:hover {
+  background-color: #d95f57;
+  transform: scale(1.05);
+}
+.project-card.active {
+  transform: scale(1);
+  opacity: 1;
+  filter: none;
+  z-index: 2;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+@keyframes scrollLinear {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.project-slider:hover .project-track { animation-play-state: paused; }
+
+/* --- Executives Section --- */
+.executives-section {
+  background-color: #f9f9f9;
+}
+
+.executives-section h2 {
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 700;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  text-align: center;
+}
+.executives-section h2 span { color: #333; font-weight: 400; }
+.executives-section h2 strong { color: #e66c64; font-weight: 700; }
+
+.executives-description {
+  font-size: clamp(0.9rem, 1.2vw, 1rem);
+  color: #555;
+  margin-bottom: 50px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.7;
+  text-align: center;
+}
+
+.executives-container { /* Specific container for executives on index.html */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 35px;
+  max-width: 1300px; /* Max width */
+  margin: 0 auto; /* Centering */
+}
+
+.executive-card {
+  background-color: #fff;
+  border: 1px solid #e9e9e9;
+  border-radius: 10px;
+  padding: 35px 30px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.04);
+  position: relative;
+  overflow: hidden;
+  transition: transform var(--transition-speed-medium) var(--ease-out-quint),
+              box-shadow var(--transition-speed-medium) var(--ease-out-quint);
+}
+
+.executive-card::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0px;
+  background-color: #e66c64;
+  z-index: 0;
+  transition: height var(--transition-speed-medium) var(--ease-out-quint);
+  border-radius: 0 0 8px 8px;
+}
+
+.executive-card:hover::before {
+  height: 100%;
+  border-radius: 0;
+}
+
+.executive-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08), 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.executive-card > * {
+  position: relative;
+  z-index: 1;
+  transition: color var(--transition-speed-medium) var(--ease-out-quint);
+}
+
+.executive-card:hover h3,
+.executive-card:hover .title,
+.executive-card:hover .bio {
+  color: #fff !important;
+}
+
+.executive-card:hover .contact-info a,
+.executive-card:hover .contact-info span {
+    color: #fff !important;
+}
+
+.executive-card:hover .contact-item:first-child::after { /* Separator line for contacts */
+  background-color: rgba(255, 255, 255, 0.5) !important;
+}
+
+.executive-card img {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 25px;
+  border: 5px solid #fff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  transition: transform var(--transition-speed-medium) var(--ease-out-quint);
+}
+
+.executive-card:hover img {
+  transform: scale(1.05);
+}
+
+.executive-card h3 {
+  font-size: clamp(1.2rem, 1.8vw, 1.4rem);
+  margin-bottom: 6px;
+  font-weight: 700;
+  color: #222;
+}
+
+.executive-card .title {
+  font-size: 0.9rem;
+  color: #e66c64;
+  font-weight: 600;
+  margin-bottom: 18px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.executive-card .bio {
+  font-size: 0.85rem;
+  color: #444;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.executive-card .contact-info {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  position: relative;
+}
+
+.executive-card .contact-item {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.executive-card .contact-item:first-child::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -12.5px;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 0;
+  background-color: rgba(230, 108, 100, 0.5); /* Default color */
+  opacity: 0;
+  transition: height 0.3s var(--ease-out-quint) 0.1s,
+              opacity 0.3s var(--ease-out-quint) 0.1s,
+              background-color 0.3s var(--ease-out-quint);
+}
+
+.executive-card:hover .contact-item:first-child::after {
+  height: 20px;
+  opacity: 1;
+}
+
+
+.executive-card .contact-icon-link {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  color: #e66c64;
+}
+
+.executive-card .contact-icon-link i {
+  font-size: 1.5rem;
+  transition: transform 0.3s var(--ease-out-quint);
+}
+
+.executive-card .contact-icon-link:hover i {
+  transform: scale(1.1);
+}
+
+.executive-card .contact-text {
+  font-size: 0.85rem;
+  font-weight: 500;
+  max-width: 0;
+  overflow: hidden;
+  opacity: 0;
+  white-space: nowrap;
+  transition: max-width var(--transition-speed-medium) var(--ease-out-quint) 0.1s,
+              opacity var(--transition-speed-fast) var(--ease-out-quint) 0.1s,
+              margin-left var(--transition-speed-medium) var(--ease-out-quint) 0.1s;
+  margin-left: 0;
+}
+
+.executive-card .contact-icon-link:hover .contact-text {
+  max-width: 250px;
+  opacity: 1;
+  margin-left: 8px;
+}
+
+
+/* --- Contact Footer --- */
+.contact-footer {
+  position: relative;
+  background: url("images/crane-background.jpg") no-repeat center center/cover;
+  color: #fff;
+  /* The footer itself should be full-width, so no global side padding here */
+  /* The .footer-overlay and .container inside will handle content width */
+  padding-top: clamp(50px, 7vw, 80px); /* Vertical padding only */
+  padding-bottom: clamp(50px, 7vw, 80px);
+}
+.footer-overlay {
+  background-color: rgba(10, 10, 20, 0.8);
+  /* The overlay itself shouldn't have the global side padding, it's for background color
+     The padding here is for the content INSIDE the overlay, IF no .container is used
+     BUT, index.html's footer has .footer-content for max-width/margin.
+     And garagerestoration.html's footer now uses .container for this.
+     So, the overlay's padding should mostly be vertical, or let .container handle horizontal.
+  */
+   padding: 0 clamp(20px, 5vw, 50px); /* Minimal horizontal padding if needed, or rely on .container */
+}
+
+.footer-content { /* Used on index.html */
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 40px;
+  max-width: 1200px; /* Consistent with global .container */
+  margin: 0 auto; /* Consistent with global .container */
+  /* If .footer-overlay has horizontal padding, this might not need it, or adjust as needed */
+}
+/* If garagerestoration.html uses .container directly inside .footer-overlay,
+   its .footer-content (if it has one) will be nested.
+   The goal is for the text/form content to align with other page content.
+   The `garagerestoration.html` footer is:
+   <footer class="contact-footer">
+     <div class="footer-overlay">
+       <div class="container">  <-- THIS WILL GET MAX-WIDTH & MARGIN AUTO
+         <div class="footer-content"> ... </div>
+       </div>
+     </div>
+   </footer>
+   This is good. The `.container` will constrain its child `.footer-content`.
+*/
+
+.footer-left { flex: 1.2; min-width: 300px; }
+.footer-left h2 {
+  font-size: clamp(1.8rem, 3vw, 2.2rem);
+  margin: 15px 0 25px;
+  color: #fff;
+  font-weight: 300;
+}
+.footer-left h2 span { font-weight: 600; }
+.footer-left h2 strong { color: #e66c64; font-weight: 700; }
+.footer-left h2 em { font-style: normal; color: #eee; font-weight: 300; }
+.footer-logo { height: 35px; width: auto; }
+.footer-columns { display: flex; flex-wrap: wrap; gap: 30px; margin-top: 25px; }
+.footer-columns > div { flex: 1 1 150px; }
+.footer-columns h4 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #e66c64;
+}
+.footer-columns p { font-size: 0.85rem; line-height: 1.6; color: #ccc; }
+.social-icons a {
+  color: #bbb;
+  margin-right: 15px;
+  font-size: 1.1rem;
+  transition: color var(--transition-speed-fast) var(--ease-out-quint),
+              transform var(--transition-speed-fast) var(--ease-out-quint);
+}
+.social-icons a:hover { color: #e66c64; transform: scale(1.15); }
+.footer-right { flex: 1; min-width: 300px; }
+.footer-right h4 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #fff;
+}
+.footer-right p { font-size: 0.9rem; margin-bottom: 20px; line-height: 1.7; color: #ddd; }
+/* Base styling for all form fields (input, textarea, and select share these) */
+.contact-form input,
+.contact-form textarea,
+.contact-form select {
+  width: 100%;
+  padding: 14px 18px;
+  margin-bottom: 15px;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 6px;
+  font-size: 0.9rem;
+  background-color: rgba(255,255,255,0.05);
+  color: #fff; /* Default text color for inputs and selected option in select */
+  transition: border-color var(--transition-speed-fast) var(--ease-out-quint),
+              box-shadow var(--transition-speed-fast) var(--ease-out-quint);
+}
+
+/* Specific styling for the SELECT dropdown to add custom arrow and remove default appearance */
+.contact-form select {
+  -webkit-appearance: none; /* Removes default browser appearance on WebKit */
+  -moz-appearance: none;    /* Removes default browser appearance on Firefox */
+  appearance: none;         /* Removes default browser appearance */
+  background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23FFFFFF%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.4-5.4-13z%22%2F%3E%3C%2Fsvg%3E');
+  background-repeat: no-repeat;
+  background-position: right 18px center;
+  background-size: 10px 10px;
+  padding-right: 40px; /* Make space for the arrow */
+}
+
+/* Styling for the placeholder option text color in the select */
+.contact-form select:required:invalid {
+  color: #aaa;
+}
+
+/* Styling for the options within the dropdown list when it's open */
+.contact-form option {
+  color: #333;
+  background-color: #fff;
+}
+
+/* Hide the disabled placeholder from the actual list of options once opened */
+.contact-form option[value=""][disabled] {
+  display: none;
+}
+
+/* Placeholder text color for input and textarea */
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: #aaa;
+}
+
+/* Focus styling for all form fields */
+.contact-form input:focus,
+.contact-form textarea:focus,
+.contact-form select:focus {
+  outline: none;
+  border-color: #e66c64;
+  background-color: rgba(255,255,255,0.1);
+  box-shadow: 0 0 0 2px rgba(230, 108, 100, 0.3);
+}
+
+/* Styling for invalid state of the select element (e.g., red border) */
+.contact-form select:invalid, /* General invalid state */
+.contact-form select:required:invalid { /* More specific for required but invalid */
+    border-color: #e66c64;
+    box-shadow: 0 0 0 2px rgba(230, 108, 100, 0.2);
+}
+
+/* --- Contact Footer --- */
+.contact-footer {
+  position: relative;
+  background: url("images/crane-background.jpg") no-repeat center center/cover;
+  color: #fff;
+}
+
+.footer-overlay {
+  background-color: rgba(10, 10, 20, 0.8);
+  padding-top: clamp(60px, 8vw, 100px);
+  padding-bottom: clamp(60px, 8vw, 100px);
+}
+/* --- Responsive Adjustments --- */
+@media (max-width: 1024px) {
+    .hero-content h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); }
+    .stats-container { gap: 1px; }
+    .stat { padding: 30px 20px; }
+    .stat .highlight, .count-percent::after, .add-percent::after { font-size: clamp(2.2rem, 4vw, 3rem); }
+}
+
+@media (max-width: 768px) {
+    .navbar { padding: 15px 20px; }
+    /* .logo { left: 20px; } Removed as flexbox handles positioning */
+    .nav-links { gap: 20px; flex-wrap: wrap; justify-content: center; }
+    .nav-links a { font-size: 0.85rem; }
+    .hero { padding: clamp(60px, 8vw, 100px) 20px clamp(150px, 18vw, 220px); }
+    .hero-content h1 { font-size: clamp(2.2rem, 7vw, 3.5rem); }
+    .stats-container { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+    .stat { text-align: center; }
+    .services-container, .executives-container { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+    .project-track { animation-duration: 60s; }
+    .project-card { flex-basis: clamp(280px, 80vw, 320px); width: clamp(280px, 80vw, 320px); margin: 0 10px; }
+    .project-card img { height: 350px; }
+    .footer-content { flex-direction: column; align-items: center; text-align: center; }
+    .footer-columns { justify-content: center; }
+    .footer-columns > div { flex-basis: 200px; }
+    .form-row { flex-direction: column; gap: 0; }
+    .form-row input:first-child { margin-bottom: 15px; }
+}
+
+@media (max-width: 480px) {
+    body { font-size: 15px; }
+    .hero-content h1 { font-size: clamp(2rem, 8vw, 2.9rem); }
+    .stat .highlight, .count-percent::after, .add-percent::after { font-size: clamp(2rem, 5vw, 2.5rem); }
+    .services-section h2, .projects-section h2, .executives-section h2 { font-size: clamp(1.6rem, 5vw, 2rem); }
+    .service-card h3, .executive-card h3, .project-card .project-title { font-size: clamp(1rem, 4vw, 1.2rem); }
+    .filter-btn { padding: 8px 15px; font-size: 0.75rem; }
+    .footer-left h2 { font-size: clamp(1.6rem, 5vw, 2rem); }
+}

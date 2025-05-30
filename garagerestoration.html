@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Garage Restoration & Maintenance - LCS Restoration</title>
+    <link rel="stylesheet" href="styles.css" /> <!-- Main/Global stylesheet FIRST -->
+    <link rel="stylesheet" href="garagerestoration.css" /> <!-- Garage-specific stylesheet SECOND -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+  </head>
+  <body class="page-garage-restoration">
+
+    <!-- Navbar (Uses global styles from styles.css) -->
+    <header class="navbar">
+      <!-- REMOVED <div class="container"> from here -->
+        <div class="logo">
+          <img src="images/LCS.png" alt="LCS Restoration Logo" />
+        </div>
+        <nav class="nav-links">
+          <a href="index.html">Home</a>
+          <div class="dropdown">
+            <a href="#services" class="dropdown-toggle active">Services</a> <!-- Parent "Services" is active -->
+            <div class="dropdown-menu">
+              <a href="garagerestoration.html" class="active">Garage Restoration</a> <!-- This page is active -->
+              <a href="facade.html">Façade Maintenance</a>
+              <a href="roofing.html">Roofing</a>
+            </div>
+          </div>
+          <a href="index.html#projects">Projects</a>
+          <a href="#footer">Contact</a>
+        </nav>
+      <!-- REMOVED </div> from here -->
+    </header>
+
+    <!-- Service-Specific Hero Section -->
+    <main class="hero service-hero garage-hero animate-on-scroll">
+      <div class="hero-content">
+        <h1>Expert Garage Restoration & Structural Repair</h1>
+        <p class="service-hero-description">
+          Preserving the integrity and safety of NYC parking structures with comprehensive restoration solutions, from concrete repair to advanced waterproofing.
+        </p>
+        <div class="buttons">
+          <a href="#footer" class="btn primary">Get a Garage Restoration Quote</a>
+        </div>
+      </div>
+    </main>
+
+    <!-- Detailed Service Overview: What We Do -->
+    <section class="service-details animate-on-scroll">
+      <div class="container">
+        <h2 class="section-title"><span>Solving Common</span> <strong>Garage Problems</strong></h2>
+        <p class="section-subtitle">Parking garages face unique challenges from constant use, vehicle loads, and exposure. We address issues like:</p>
+        <div class="problem-solution-grid">
+          <div class="problem-item">
+            <i class="fas fa-car-burst fa-2x service-icon"></i>
+            <h3>Spalling & Delaminated Concrete</h3>
+            <p>Repairing deteriorated concrete surfaces to restore structural integrity and prevent further damage.</p>
+          </div>
+          <div class="problem-item">
+            <i class="fas fa-water fa-2x service-icon"></i>
+            <h3>Water Intrusion & Leaks</h3>
+            <p>Implementing robust waterproofing systems to protect against water damage and rebar corrosion.</p>
+          </div>
+          <div class="problem-item">
+            <i class="fas fa-hammer fa-2x service-icon"></i>
+            <h3>Structural Deficiencies</h3>
+            <p>Strengthening beams, columns, and slabs to ensure long-term safety and compliance.</p>
+          </div>
+          <div class="problem-item">
+            <i class="fas fa-ruler-combined fa-2x service-icon"></i>
+            <h3>Expansion Joint Failures</h3>
+            <p>Repairing and replacing failed expansion joints to accommodate movement and prevent leaks.</p>
+          </div>
+        </div>
+
+        <h2 class="sub-section-title">Our Comprehensive Garage Restoration Services</h2>
+        <ul class="service-offerings-list">
+            <li><i class="fas fa-check-circle"></i> Concrete Repair & Patching</li>
+            <li><i class="fas fa-check-circle"></i> Structural Strengthening & Carbon Fiber Reinforcement</li>
+            <li><i class="fas fa-check-circle"></i> Vehicular & Pedestrian Traffic Coatings</li>
+            <li><i class="fas fa-check-circle"></i> Epoxy & Urethane Injection</li>
+            <li><i class="fas fa-check-circle"></i> Waterproofing Membranes & Sealants</li>
+            <li><i class="fas fa-check-circle"></i> Expansion Joint Systems</li>
+            <li><i class="fas fa-check-circle"></i> Drain Installation & Repair</li>
+            <li><i class="fas fa-check-circle"></i> Protective Coatings & Sealers</li>
+            <li><i class="fas fa-check-circle"></i> Garage Lighting Upgrades</li>
+            <li><i class="fas fa-check-circle"></i> Line Striping & Safety Markings</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- The LCS Advantage for Garage Restoration -->
+    <section class="lcs-advantage animate-on-scroll">
+        <div class="container">
+            <h2 class="section-title"><span>The LCS Advantage</span> <strong>in Garage Restoration</strong></h2>
+            <p class="section-subtitle">Why NYC property managers and owners trust LCS for their critical garage infrastructure.</p>
+            <div class="feature-grid">
+                <div class="feature-row">
+                    <div class="feature-item">
+                        <span class="icon"><i class="fas fa-shield-alt"></i></span>
+                        <h4>Specialized Expertise</h4>
+                        <p class="feature-description">Deep understanding of parking structure engineering and common failure points.</p>
+                    </div>
+                    <div class="feature-item">
+                        <span class="icon"><i class="fas fa-cogs"></i></span>
+                        <h4>Advanced Methodologies</h4>
+                        <p class="feature-description">Utilizing the latest repair techniques and high-performance materials for lasting results.</p>
+                    </div>
+                </div>
+                <div class="feature-row">
+                    <div class="feature-item">
+                        <span class="icon"><i class="fas fa-traffic-light"></i></span>
+                        <h4>Minimized Disruption</h4>
+                        <p class="feature-description">Phased execution plans to maintain garage operation and minimize tenant inconvenience.</p>
+                    </div>
+                    <div class="feature-item">
+                        <span class="icon"><i class="fas fa-award"></i></span>
+                        <h4>Long-Term Value</h4>
+                        <p class="feature-description">Focused on solutions that extend the lifespan of your garage and reduce future maintenance costs.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Process for Garage Restoration -->
+    <section class="our-process animate-on-scroll">
+      <div class="container">
+        <h2 class="section-title"><span>Our Garage</span> <strong>Restoration Process</strong></h2>
+        <div class="process-steps">
+          <div class="step-item">
+            <div class="step-icon"><i class="fas fa-search-location"></i></div>
+            <h3>1. Assessment & Diagnosis</h3>
+            <p>Thorough site inspection, testing, and analysis to identify root causes and extent of damage.</p>
+          </div>
+          <div class="step-item">
+            <div class="step-icon"><i class="fas fa-file-signature"></i></div>
+            <h3>2. Tailored Solution & Proposal</h3>
+            <p>Developing a detailed scope of work and transparent proposal outlining the best repair strategies.</p>
+          </div>
+          <div class="step-item">
+            <div class="step-icon"><i class="fas fa-hard-hat"></i></div>
+            <h3>3. Execution & Quality Control</h3>
+            <p>Skilled crews implement repairs with strict adherence to safety and quality standards.</p>
+          </div>
+          <div class="step-item">
+            <div class="step-icon"><i class="fas fa-clipboard-check"></i></div>
+            <h3>4. Final Walkthrough & Warranty</h3>
+            <p>Ensuring client satisfaction and providing comprehensive warranties on workmanship and materials.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Garage Projects (Magazine Style) -->
+    <section class="featured-projects service-projects animate-on-scroll" id="garage-projects">
+      <div class="container">
+        <h2 class="section-title"><span>Featured Garage</span> <strong>Restorations</strong></h2>
+        <p class="section-subtitle">See how we've transformed deteriorating parking structures into safe, durable, and functional assets.</p>
+
+        <article class="project-showcase-item" id="historic-garage-lic">
+          <div class="project-showcase-image-gallery">
+            <img src="images/panel-damage-garage-tec.jpg" alt="LIC Garage Restoration After">
+            <img src="images/organized-garage-interior-gl070815.jpg" alt="LIC Garage Restoration Before" class="before-image">
+          </div>
+          <div class="project-showcase-content">
+            <h3>Revitalizing a Landmark: The Grand Avenue Garage, LIC</h3>
+            <p class="project-meta"><strong>Location:</strong> Long Island City, NY | <strong>Duration:</strong> 8 Weeks</p>
+            <h4>The Challenge:</h4>
+            <p>This historic parking structure suffered from extensive concrete spalling, rebar corrosion, and failing waterproofing, compromising its structural integrity and user safety.</p>
+            <h4>Our Solution:</h4>
+            <p>LCS implemented a multi-faceted restoration plan including comprehensive concrete repairs, installation of a new high-performance traffic coating system, and upgrades to expansion joints. Advanced cathodic protection was used in targeted areas.</p>
+            <h4>Key Highlights:</h4>
+            <ul>
+              <li><i class="fas fa-wrench"></i> Over 5,000 sq ft of concrete repaired.</li>
+              <li><i class="fas fa-shield-alt"></i> New elastomeric waterproofing membrane applied.</li>
+              <li><i class="fas fa-check-double"></i> Project completed ahead of schedule and under budget.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="project-showcase-item" id="midtown-garage-repair">
+          <div class="project-showcase-image-gallery">
+            <img src="https://picsum.photos/seed/garageB_after/800/600" alt="Midtown Garage After">
+            <img src="https://picsum.photos/seed/garageB_before/800/600" alt="Midtown Garage Before" class="before-image">
+          </div>
+          <div class="project-showcase-content">
+            <h3>Midtown Commercial Garage: Structural Upgrade</h3>
+             <p class="project-meta"><strong>Location:</strong> Midtown, Manhattan | <strong>Duration:</strong> 12 Weeks</p>
+            <h4>The Challenge:</h4>
+            <p>A busy commercial garage required urgent structural upgrades to address deteriorating support beams and ensure compliance with city regulations.</p>
+            <h4>Our Solution:</h4>
+            <p>Our team employed carbon fiber reinforcement techniques to strengthen critical structural elements, alongside targeted concrete repairs and protective coating applications to prevent future deterioration.</p>
+            <h4>Key Highlights:</h4>
+            <ul>
+              <li><i class="fas fa-layer-group"></i> Carbon fiber wrapping for beam strengthening.</li>
+              <li><i class="fas fa-people-arrows"></i> Phased work to maintain partial garage operation.</li>
+              <li><i class="fas fa-chart-line"></i> Enhanced load-bearing capacity and extended service life.</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Service-Specific Testimonials -->
+    <section class="service-testimonials animate-on-scroll">
+        <div class="container">
+            <h2 class="section-title"><span>What Our Clients Say</span> <strong>About Our Garage Work</strong></h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <i class="fas fa-quote-left fa-2x"></i>
+                    <p>"LCS Restoration did an outstanding job on our garage. The transformation is incredible, and their team was professional and efficient throughout the entire process. Highly recommend for any major garage work."</p>
+                    <h4>- John D., Property Manager, NYC</h4>
+                </div>
+                <div class="testimonial-card">
+                     <i class="fas fa-quote-left fa-2x"></i>
+                    <p>"After struggling with persistent leaks, LCS provided a comprehensive waterproofing solution that has completely solved our problems. Their expertise in garage structures is evident."</p>
+                    <h4>- Sarah P., Condo Board President, Brooklyn</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ for Garage Restoration -->
+    <section class="service-faq animate-on-scroll">
+      <div class="container">
+        <h2 class="section-title"><span>Frequently Asked Questions:</span> <strong>Garage Restoration</strong></h2>
+        <div class="faq-item">
+          <h3>How long does a typical garage restoration project take?</h3>
+          <p>Project duration varies greatly depending on the size of the garage, the extent of damage, and the specific repairs needed. Small repairs might take a few days, while comprehensive restorations can take several weeks to months. We provide a detailed timeline with our proposal after a thorough assessment.</p>
+        </div>
+        <div class="faq-item">
+          <h3>What are the common signs my garage needs restoration?</h3>
+          <p>Look for cracking or spalling concrete, exposed rebar (rusting steel), water leaks or stains, pooling water, or heaving/uneven floor slabs. Any visible deterioration warrants a professional inspection.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Can my garage remain operational during restoration?</h3>
+          <p>Whenever possible, we implement phased work plans to keep sections of the garage open and minimize disruption to tenants and visitors. We'll discuss specific logistical needs during the planning phase.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer (Uses global styles from styles.css) -->
+    <footer class="contact-footer animate-on-scroll" id="footer">
+      <div class="footer-overlay">
+        <div class="container"> <!-- Ensures footer content is constrained by global .container style -->
+          <div class="footer-content">
+            <div class="footer-left">
+              <img src="images/LCS.png" alt="LCS Restoration Logo" class="footer-logo" />
+              <h2>
+                <span>LCS</span> <strong>Restoration</strong><br /><em>Corp</em>
+              </h2>
+              <div class="footer-columns">
+                <div>
+                  <h4>Long Island City</h4>
+                  <p>49-47 31st Street<br />Long Island City, NY 11101</p>
+                </div>
+                <div>
+                  <h4>Office hours</h4>
+                  <p>Monday to Friday<br />9:00 am to 5:00 pm</p>
+                </div>
+                <div>
+                  <h4>Stay connected</h4>
+                  <div class="social-icons">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="footer-right">
+              <h4>Let’s Talk</h4>
+              <p>
+                Have a question for our team, or ready to get to work?<br />Reach
+                out to start the conversation.
+              </p>
+              <form class="contact-form" action="#" method="POST">
+                <div class="form-row">
+                  <input type="text" placeholder="First Name" name="firstName" required />
+                  <input type="text" placeholder="Last Name" name="lastName" required />
+                </div>
+                <input type="email" placeholder="Email" name="email" required />
+                <input type="tel" placeholder="Phone (e.g., 555-123-4567)" name="phone" />
+                <textarea placeholder="Your Message" name="message" required></textarea>
+                <button type="submit" class="btn primary">Send Message</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js" defer></script> <!-- Global script file -->
+  </body>
+</html>

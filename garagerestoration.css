@@ -1,0 +1,563 @@
+/* ---------------------------------------------------- */
+/*    GARAGE RESTORATION PAGE - SPECIFIC STYLES         */
+/* ---------------------------------------------------- */
+
+/* :root can define variables if not already in styles.css */
+:root {
+    --primary-color: #e66c64;
+    --primary-color-light: #f0a09a;
+    --primary-color-dark: #c45a53;
+    --primary-color-xlight: #feedec; /* Very light for backgrounds */
+    --text-dark: #333;
+    --text-medium: #555;
+    --text-light: #777;
+    --background-white: #fff;
+    --background-light-gray: #f9f9f9;
+    --border-light: #e0e0e0;
+    --section-padding-y: clamp(60px, 8vw, 100px);
+    --ease-out-quint: cubic-bezier(0.23, 1, 0.32, 1); /* Example easing */
+}
+
+
+/* --- General Section Styling --- */
+section {
+  padding-top: var(--section-padding-y);
+  padding-bottom: var(--section-padding-y);
+}
+
+/*
+  Point 2: Centered Content
+  This page's layout relies on a global .container class, which is typically defined
+  in your main 'styles.css' file.
+  For effective centering and responsive side spacing, ensure your .container class in
+  'styles.css' includes properties like:
+    - max-width (e.g., 1200px)
+    - margin-left: auto;
+    - margin-right: auto;
+    - padding-left (e.g., clamp(15px, 3vw, 30px))
+    - padding-right (e.g., clamp(15px, 3vw, 30px))
+  The HTML structure in this 'garagerestoration.html' file uses <div class="container">
+  within sections to apply this centering.
+*/
+
+h2.section-title,
+.sub-section-title,
+p.section-subtitle {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+h2.section-title {
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 300;
+  color: var(--text-dark);
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  line-height: 1.3;
+}
+
+h2.section-title span {
+  font-weight: 300;
+}
+
+h2.section-title strong {
+  color: var(--primary-color);
+  font-weight: 700;
+}
+
+p.section-subtitle {
+  font-size: clamp(0.95rem, 1.2vw, 1.1rem);
+  color: var(--text-medium);
+  margin-bottom: 50px;
+  max-width: 750px;
+  line-height: 1.7;
+}
+
+
+/* --- Garage Service Hero Section --- */
+.service-hero.garage-hero {
+  background: linear-gradient(rgba(30, 35, 40, 0.78), rgba(30, 35, 40, 0.78)),
+              url('https://picsum.photos/seed/lcsgarage_hero/1920/1080') no-repeat center center/cover;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: var(--background-white);
+}
+
+.service-hero.garage-hero .hero-content {
+  max-width: 850px; /* Centered */
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 15px; /* Ensure padding if hero-content is smaller than container */
+  padding-right: 15px;
+}
+
+/* 1. Expert Garage Restoration & Structural Repair heading color */
+.service-hero.garage-hero h1 {
+  font-size: clamp(2.8rem, 6.5vw, 4.5rem);
+  font-weight: 700;
+  color: var(--primary-color); /* Changed color */
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25); /* Adjusted shadow for new color */
+  margin-bottom: 20px;
+  line-height: 1.15;
+}
+
+.service-hero.garage-hero .service-hero-description {
+  color: #e9ecef; /* Slightly off-white for better readability */
+  font-size: clamp(1.05rem, 1.6vw, 1.3rem);
+  margin-bottom: 35px;
+  line-height: 1.65;
+}
+
+
+/* --- Detailed Service Overview: Garage --- */
+.service-details {
+    background-color: var(--background-white);
+}
+
+.problem-solution-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+.problem-item {
+    background-color: var(--background-white);
+    padding: 30px 25px;
+    border-radius: 10px;
+    border: 1px solid var(--border-light);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    transition: transform 0.3s var(--ease-out-quint), box-shadow 0.3s var(--ease-out-quint);
+}
+.problem-item:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+.problem-item .service-icon {
+    font-size: 2.8rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    display: inline-block;
+    transition: transform 0.3s var(--ease-out-quint);
+}
+.problem-item:hover .service-icon {
+    transform: scale(1.12);
+}
+.problem-item h3 {
+    font-size: clamp(1.2rem, 1.8vw, 1.4rem);
+    margin-bottom: 12px;
+    color: var(--text-dark);
+    font-weight: 600;
+}
+.problem-item p {
+    font-size: 0.95rem;
+    color: var(--text-medium);
+    line-height: 1.7;
+}
+
+.sub-section-title {
+    font-size: clamp(1.8rem, 3.2vw, 2.5rem);
+    font-weight: 600;
+    margin-top: 70px;
+    margin-bottom: 35px;
+    color: var(--text-dark);
+    text-align: center;
+}
+
+/* 3. Service Offerings List - Modern/Premium Enhancement */
+.service-offerings-list {
+    list-style: none;
+    padding-left: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin-bottom: 30px;
+}
+.service-offerings-list li {
+    background-color: var(--background-white);
+    padding: 25px 20px;
+    border-radius: 12px;
+    border: 1px solid var(--border-light);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.07);
+    display: flex;
+    align-items: flex-start;
+    line-height: 1.6;
+    font-size: clamp(1rem, 1.2vw, 1.05rem);
+    color: var(--text-medium);
+    transition: transform 0.3s var(--ease-out-quint),
+                box-shadow 0.3s var(--ease-out-quint),
+                border-color 0.3s ease;
+}
+.service-offerings-list li:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    border-color: var(--primary-color-light);
+}
+.service-offerings-list li i.fa-check-circle {
+    color: var(--primary-color);
+    background-color: var(--primary-color-xlight);
+    border-radius: 50%;
+    min-width: 38px;
+    height: 38px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1em;
+    margin-right: 15px;
+    margin-top: 0.05em; /* Minor adjustment for vertical alignment */
+    flex-shrink: 0;
+    box-shadow: 0 2px 5px rgba(230, 108, 100, 0.2);
+}
+
+/* --- The LCS Advantage for Garage Restoration --- */
+.lcs-advantage {
+    background-color: var(--background-light-gray);
+}
+/* 4. LCS Advantage Section - Unique Animation/Style */
+/* Assuming .feature-grid and base .feature-item styles from global styles.css */
+.lcs-advantage .feature-item {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--border-light);
+    transition: transform 0.3s var(--ease-out-quint),
+                box-shadow 0.3s var(--ease-out-quint),
+                border-color 0.3s var(--ease-out-quint);
+    /* Ensure base .feature-item from styles.css has some padding and structure */
+    background-color: var(--background-white); /* Ensure a background for shine to work on */
+    border-radius: 8px; /* Assuming this is in global, or add it */
+    padding: 25px; /* Assuming this is in global, or add it */
+}
+.lcs-advantage .feature-item:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.1);
+    border-color: var(--primary-color);
+}
+.lcs-advantage .feature-item .icon {
+    /* Assuming styles from global styles.css for .icon container */
+    margin-bottom: 15px; /* Example */
+    display: inline-block; /* For transform origin to work well */
+}
+.lcs-advantage .feature-item .icon i {
+    color: var(--primary-color);
+    font-size: 2.5rem; /* Example size */
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.lcs-advantage .feature-item:hover .icon i {
+    transform: scale(1.25) rotate(15deg);
+}
+.lcs-advantage .feature-item h4 {
+    /* Assuming styles from global styles.css for h4 */
+    font-size: 1.25rem; /* Example */
+    color: var(--text-dark);
+    margin-bottom: 10px;
+}
+.lcs-advantage .feature-item p.feature-description {
+    font-size: 0.9rem;
+    color: var(--text-medium);
+    line-height: 1.65;
+}
+/* Shine effect for LCS Advantage items */
+.lcs-advantage .feature-item::after {
+    content: "";
+    position: absolute;
+    top: -10%;
+    left: -150%;
+    width: 60%;
+    height: 120%;
+    background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.35) 50%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    transform: skewX(-25deg);
+    transition: left 0.8s ease-in-out;
+    pointer-events: none;
+}
+.lcs-advantage .feature-item:hover::after {
+    left: 120%;
+}
+
+/* --- Our Process for Garage Restoration --- */
+.our-process {
+    background-color: var(--background-white);
+}
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  margin-top: 50px;
+}
+.step-item {
+  text-align: center;
+  padding: 35px 25px;
+  background-color: var(--background-white);
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+  border: 1px solid var(--border-light);
+  transition: transform 0.3s var(--ease-out-quint), box-shadow 0.3s var(--ease-out-quint);
+}
+.step-item:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.09);
+}
+.step-item .step-icon {
+  font-size: 2.8rem;
+  color: var(--background-white);
+  margin-bottom: 25px;
+  background-color: var(--primary-color);
+  width: 85px;
+  height: 85px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 5px 12px rgba(230, 108, 100, 0.35);
+}
+.step-item h3 {
+  font-size: clamp(1.25rem, 1.9vw, 1.45rem);
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: var(--text-dark);
+}
+.step-item p {
+    font-size: 0.95rem;
+    color: var(--text-medium);
+    line-height: 1.7;
+}
+
+/* --- Featured Garage Projects (Magazine Style) --- */
+.featured-projects#garage-projects {
+    background-color: var(--background-light-gray);
+}
+
+/* 5. Featured Garage Restoration: Image left, text right for ALL */
+.project-showcase-item {
+  display: flex;
+  flex-direction: row; /* Ensures image gallery (if first in HTML) is left */
+  flex-wrap: wrap;
+  gap: clamp(25px, 4vw, 40px);
+  margin-bottom: 70px;
+  padding-bottom: 50px;
+  border-bottom: 1px solid var(--border-light);
+}
+.project-showcase-item:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+/* Override .alt-layout if it exists, or simply remove it from HTML */
+.project-showcase-item.alt-layout {
+  flex-direction: row; /* Image gallery always left */
+}
+
+.project-showcase-image-gallery {
+  flex: 1 1 clamp(300px, 40%, 500px);
+  min-width: 280px;
+  position: relative; /* For absolute positioning of before/after images */
+  cursor: pointer; /* Indicate hover interactivity */
+  border-radius: 8px; /* Apply border radius to the container for overflow hidden */
+  overflow: hidden; /* Clip images if they somehow exceed bounds */
+  box-shadow: 0 7px 22px rgba(0, 0, 0, 0.12); /* Shadow on gallery container */
+}
+.project-showcase-image-gallery img {
+  width: 100%;
+  height: 100%;
+  /* border-radius: 8px; /* Moved to parent for consistency with overflow */
+  /* box-shadow: 0 7px 22px rgba(0, 0, 0, 0.12); /* Moved to parent */
+  object-fit: cover;
+  display: block;
+  aspect-ratio: 16/10;
+  transition: opacity 0.5s ease-in-out;
+}
+
+/* 5. Image hover effect: Default shows AFTER, hover shows BEFORE */
+.project-showcase-image-gallery img.before-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1; /* Sits on top of the default (after) image */
+    opacity: 0; /* Hidden by default */
+}
+.project-showcase-image-gallery:hover img.before-image {
+    opacity: 1; /* Show "before" image on hover */
+}
+.project-showcase-image-gallery:hover img:not(.before-image) {
+    opacity: 0; /* Hide "after" image on hover to fully show "before" */
+}
+
+
+.project-showcase-content {
+  flex: 1.5 1 clamp(320px, 55%, 600px);
+}
+/* Ensure consistent padding regardless of alt-layout (now removed from effect) */
+.project-showcase-item .project-showcase-content {
+  padding-left: 0; /* If image gallery is always first, no specific padding needed here as gap handles it */
+  padding-right: 0;
+}
+
+.project-showcase-content h3 {
+  font-size: clamp(1.8rem, 3vw, 2.3rem);
+  color: var(--primary-color);
+  margin-bottom: 10px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+.project-showcase-content .project-meta {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    margin-bottom: 25px;
+    font-style: italic;
+}
+.project-showcase-content .project-meta strong {
+    color: var(--text-medium);
+    font-weight: 600;
+}
+.project-showcase-content h4 {
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-top: 30px;
+  margin-bottom: 12px;
+}
+.project-showcase-content p {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: var(--text-medium);
+    margin-bottom: 18px;
+}
+.project-showcase-content ul {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 25px;
+}
+.project-showcase-content ul li {
+  margin-bottom: 12px;
+  display: flex;
+  align-items: flex-start;
+  font-size: 1rem;
+  color: var(--text-medium);
+}
+.project-showcase-content ul li i {
+  color: var(--primary-color);
+  margin-right: 12px;
+  font-size: 1.25em;
+  width: 22px;
+  text-align: center;
+  flex-shrink: 0;
+  margin-top: 0.1em;
+}
+
+@media (max-width: 768px) {
+  .project-showcase-item {
+    flex-direction: column;
+  }
+}
+
+/* --- Service-Specific Testimonials --- */
+.service-testimonials {
+    background-color: var(--background-white);
+}
+.service-testimonials .testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+}
+.service-testimonials .testimonial-card {
+    background-color: var(--background-light-gray);
+    padding: 40px 35px;
+    border-radius: 10px;
+    border: 1px solid var(--border-light);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+.service-testimonials .testimonial-card i.fa-quote-left {
+    color: var(--primary-color);
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+}
+.service-testimonials .testimonial-card p {
+    font-size: clamp(1.05rem, 1.4vw, 1.15rem);
+    color: var(--text-medium);
+    line-height: 1.8;
+    margin-bottom: 25px;
+    flex-grow: 1;
+}
+.service-testimonials .testimonial-card h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    text-align: left;
+    margin-top: auto;
+}
+
+/* --- FAQ for Garage Restoration --- */
+.service-faq {
+    background-color: var(--background-light-gray);
+}
+.service-faq .faq-item {
+  background-color: var(--background-white);
+  padding: 25px 30px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  border: 1px solid var(--border-light);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+  cursor: pointer; /* Indicate hover interactivity */
+  transition: box-shadow 0.3s var(--ease-out-quint);
+}
+.service-faq .faq-item:hover {
+    box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+}
+.service-faq .faq-item:last-child {
+    margin-bottom: 0;
+}
+.service-faq .faq-item h3 {
+  font-size: clamp(1.15rem, 1.5vw, 1.3rem);
+  font-weight: 600;
+  margin-bottom: 0; /* Answer's margin-top will create space */
+  color: var(--primary-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: color 0.3s ease;
+}
+.service-faq .faq-item:hover h3 {
+    color: var(--primary-color-dark);
+}
+
+/* 6. FAQ: Answer hidden by default, shows on hover */
+.service-faq .faq-item p {
+    font-size: 1rem;
+    color: var(--text-medium);
+    line-height: 1.75;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    margin-top: 0;
+    padding-top: 0;
+    transition: max-height 0.5s var(--ease-out-quint),
+                opacity 0.4s 0.1s var(--ease-out-quint),
+                margin-top 0.5s var(--ease-out-quint),
+                padding-top 0.5s var(--ease-out-quint);
+    pointer-events: none;
+}
+.service-faq .faq-item:hover p {
+    max-height: 400px; /* Adjust if answers are very long */
+    opacity: 1;
+    margin-top: 15px;
+    padding-top: 5px;
+    pointer-events: auto;
+}
+
+/* --- Service-Specific CTA / Quote Section - REMOVED (styles commented out) --- */
+/*
+.service-quote-cta {
+    ...
+}
+*/
+
+/* Ensure your global styles.css contains button styles like .btn.primary and .btn.outline */
